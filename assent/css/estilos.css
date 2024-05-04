@@ -1,0 +1,70 @@
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+}
+
+#menu ul li {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    padding: 15px;
+
+
+
+
+}
+
+#menu ul li a:hover{   
+    color: #d40707;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.Raki_Daulat{
+    position: absolute;
+    left: 10px;
+    top: 80px;
+}
+
+.logo{
+    position: absolute;
+   left: 150PX;
+   top: 200px;
+
+}
+
+@font-face{
+    font-family:  "Cooper Std Black";
+    src: url("fonts/CooperBlackStd.otd");
+}
+body{
+    background: radial-gradient(at top, orange, red);
+    background-attachment: fixed    
+}
+.bg-light {
+    background-color: #f8f9fa3b!important;
+}
+.bg-gradiente{
+    background: linear-gradient(-45deg,red,yellow);
+}
+h1,h2,h3,h4,.nav-link{
+    font-family:  "Cooper Std Black";
+    color: #FF3F00
+}
+h1{
+    -webkit-text-stroke: 2px red;
+    color: #FFBF00;
+}
+
+.carousel-item {
+position: relative;
+display: none;
+float: left;
+width: 100%;
+margin-right: -100%;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+transition: transform .6s ease-in-out;
+}

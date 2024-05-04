@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+     <title>Raki_Daulat</title>
+     <link rel="icon" type="image/x-icon" href="assent/img/LOGO.png">
+     <!-- Librerias Boostrap -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="assent/css/reserva.css">
+     <script src=""></script>
+	</head>
+    <body>  
+        <div id="reservations"></div>
+        <section class="reservation-zone">
+            <div class="zone-info-reservation wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="header-text center">
+                            <div class="header-title">
+                                <i class="fa fa-spoon"></i> Reservations <i class="fa fa-spoon"></i>
+                            </div>
+                            <p>Please submit your reservation details and we will contact you to confirm
+                                your booking
+                            </p>
+                        </div>
+                        <div class="phone center">
+                            <a href="tel:#">
+                               <h2>+1-234-567-891</h2>
+                            </a>
+                        </div>
+                        <form role="form" class="form-contact" action="./reserva.php" method="GET">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="tu Nombre *"
+                                    required="required" name="name">
+                                    <input type="email" class="form-control" placeholder="tu Email *"
+                                    required="required" name="email">
+                                    <input type="tel" class="form-control" placeholder="Telefono *" name=" phone">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="icon-wrapper">
+                                        <ion-icon name="time" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                      
+                                        <input type="date" name="reservation-date" class="input-field">
+                      
+                                        <ion-icon name="chevron-down" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                                      </div>
+                                    <div class="icon-wrapper">
+                                        <ion-icon name="date" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                                        
+                                        <select name="person" class="input-field">
+                                          <option value="08:00am">08 : 00 am</option>
+                                          <option value="09:00am">09 : 00 am</option>
+                                          <option value="010:00am">10 : 00 am</option>
+                                          <option value="011:00am">11 : 00 am</option>
+                                          <option value="012:00am">12 : 00 am</option>
+                                          <option value="01:00pm">01 : 00 pm</option>
+                                          <option value="02:00pm">02 : 00 pm</option>
+                                          <option value="03:00pm">03 : 00 pm</option>
+                                          <option value="04:00pm">04 : 00 pm</option>
+                                          <option value="05:00pm">05 : 00 pm</option>
+                                          <option value="06:00pm">06 : 00 pm</option>
+                                          <option value="07:00pm">07 : 00 pm</option>
+                                          <option value="08:00pm">08 : 00 pm</option>
+                                          <option value="09:00pm">09 : 00 pm</option>
+                                          <option value="10:00pm">10 : 00 pm</option>
+                                        </select>
+                                        <ion-icon name="chevron-down" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+                                    </div>
+                                    <div class="icon-wrapper">
+                                        <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                      
+                                        <select name="person" class="input-field">
+                                          <option value="1-person">1 Person</option>
+                                          <option value="2-person">2 Person</option>
+                                          <option value="3-person">3 Person</option>
+                                          <option value="4-person">4 Person</option>
+                                          <option value="5-person">5 Person</option>
+                                          <option value="6-person">6 Person</option>
+                                          <option value="7-person">7 Person</option>
+                                        </select>
+                      
+                                        <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea required="required" placeholder=" Tu Message *" name="Message"></textarea>
+                                    <button type="submit" class="btn btn-primary btn-sm btn-block">Request Booking
+                                </div>
+                            </div>
+                        </form>
+                        <div class="result-reservations center">
+                            <div class="alert alert-success">Thank you for signing up. We will contact you soon!
+                        </div>
+                        
+                    </div>
+            </div>
+            <div class="zone-info-reservation-image"></div>
+        </section>
+        <div id="contact"></div>
+        <footer class="paddings">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 about-us col-xs-6 col-sm-12">
+                        <h3 class="color">Exelente, restaurante Raki_Daulat deliciosa comida i exotica de indiy la buena comida. </h3>
+                        <p>Apoyamos el desarrollo sostenible, por eso el poder cultivar
+                           nuestros propios productos ayuda a reducir el consumo de agua que en la mayoria 
+                          de los cultivos es bastante alta, además procuramos no aplicar fertilizantes
+                          quimicos. Los productos que no cultivamos los compramos directamente a capesinos 
+                          de la región y con esto incentivammos la producción adricolo local.
+                        </p>
+                        
+                    </div>
+                    <div class="col-md-4 col-xs-6 col-sm-6">
+                        <h3 class="color">Horarios de atención</h3>
+                        <ul class="working-hours">
+                            <li>Lunes <span>Cerrado</span></li>
+                            <li>Miercoles<span>10:30am - 11:30pm</span></li>
+                            <li>Jueves <span>10:30am - 11:30pm</span></li>
+                            <li>Viernes <span>Cerrado</span></li>
+                            <li>Sabado <span>10:30am - 11:30pm</span></li>
+                            <li>Domingo <span>10:30am - 11:30pm</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="mapa container-fluid bg-white p-0">
+            
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2181015083097!2d-75.16167268476889!3d6.2349559954867315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e441d2a2f90b049%3A0xe73c0a7060062903!2sHOTEL+PORTOBELO+GUATAPE!5e0!3m2!1ses!2sco!4v1544281019677" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        
+            <div class=" p-4 info"> 
+        
+                <h3 class="mt-4"><strong>Visítanos</strong></h3>
+                
+        
+                <p>
+               
+                246 maravilloso del paraíso<br>
+                </p>
+        
+                <p class="pb-4">Email: Raki_Daulat@gmail.com<br>
+                Tel:  829-684-63250</p>
+        
+            </div>	
+        
+        </div>
+        
+       
+    </body>  
+</html>   

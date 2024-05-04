@@ -1,0 +1,44 @@
+body {
+    background-image: -webkit-image-set( url("/img/bg3.jpg") no-repeat right top width 100%  );
+    font-family: Arial, Helvetica, sans-serif;  
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+form {
+    padding: 50px 55px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    text-align: center;
+    width: 340px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+h2 {
+    color: #FFC0CB;
+    font-size: 35px;
+}
+
+label {
+    color: rgb(238, 15, 26);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    padding: 24px 40px;
+    border-radius: 17px;
+    background-color: #FFC0CB;
+    border: 2px solid #f9ffc0;
+    color: black
+}
+
