@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: raki_daulat
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_NAME: raki_daulat
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      PGPASSWORD: postgres
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: pdo_pgsql
+          coverage: none
+
+      - name: Revisar sintaxis PHP
+        run: for f in api/*.php; do php -l "$f"; done
+
+      - name: Revisar enlaces e imágenes
+        run: python3 tests/check_links.py
+
+      - name: Crear tablas
+        run: psql -h localhost -U postgres -d raki_daulat -f database/schema.sql
+
+      - name: Levantar servidor PHP
+        run: |
+          php -S localhost:8000 > php.log 2>&1 &
+          sleep 2
+
+      - name: Pruebas de la API
+        run: BASE_URL=http://localhost:8000 bash tests/api_test.sh
+
+      - name: Log del servidor (si falla)
+        if: failure()
+        run: cat php.log

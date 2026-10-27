@@ -1,0 +1,4 @@
+# El archivo de funciones compartidas no debe ser accesible desde la web
+<Files "_bootstrap.php">
+  Require all denied
+</Files>

@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Carta tipo libro: la portada y la contraportada se abren en 3D (escritorio).
+   En pantallas pequeñas las páginas se muestran apiladas, sin animación.
+   ========================================================================== */
+
+.book-section { background: var(--sand); }
+
+.book {
+  --book-h: 820px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: var(--book-h);
+  max-width: 1080px;
+  margin-inline: auto;
+  perspective: 2200px;
+}
+
+.book-page {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.book-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 1.75rem 1.5rem;
+  background: linear-gradient(to right, #fffdf9 0%, #ffffff 30%, #f1ebe1 100%);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+/* Página izquierda: cerrada queda doblada sobre la central mostrando la portada */
+.book-page--left {
+  transform-origin: right center;
+  transform: rotateY(180deg);
+  transition-delay: 0.3s;
+  z-index: 3;
+}
+.book-page--left .book-face--cover { transform: rotateY(180deg); }
+.book-page--left .book-face--inner { background: linear-gradient(to right, #f1ebe1 0%, #ffffff 70%, #fffdf9 100%); }
+
+/* Página derecha: cerrada queda doblada sobre la central mostrando la contraportada */
+.book-page--right {
+  transform-origin: left center;
+  transform: rotateY(-180deg);
+  z-index: 2;
+}
+.book-page--right .book-face--back {
+  transform: rotateY(180deg);
+  background: var(--ink);
+  border: 8px double #4a4037;
+}
+
+.book.is-open .book-page--left { transform: rotateY(0deg); transition-delay: 0s; }
+.book.is-open .book-page--right { transform: rotateY(0deg); transition-delay: 0.3s; }
+
+/* ---------- Portada ---------- */
+.book-face--cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--ink);
+  color: #e9dfd1;
+  box-shadow: var(--shadow-lg);
+}
+.book-face--cover h2 { color: var(--white); font-size: 2.2rem; margin: 0.75rem 0 0.2rem; }
+.book-face--cover hr {
+  width: 140px;
+  height: 3px;
+  border: 0;
+  margin: 1rem auto;
+  background: linear-gradient(to right, var(--coral), #f2b179);
+}
+.cover-logo { width: 110px; height: 110px; }
+.cover-sub { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: #ffb38f; margin: 0; }
+.cover-info { margin-top: 2rem; font-size: 0.88rem; color: #c9bcaa; }
+.cover-info p { margin: 0 0 0.3rem; }
+
+/* ---------- Platos ---------- */
+.book-face--inner { display: flex; flex-direction: column; justify-content: space-between; gap: 0.5rem; }
+
+.menu-item { text-align: center; }
+.menu-item + .menu-item { border-top: 1px solid var(--line); padding-top: 0.75rem; }
+.menu-item__cat {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+.menu-item img {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0.4rem auto;
+  box-shadow: var(--shadow);
+}
+.menu-item h3 { font-size: 1.1rem; margin: 0 0 0.25rem; }
+.menu-item p { font-size: 0.86rem; line-height: 1.5; color: var(--muted); margin: 0; }
+
+/* ---------- Botón cerrar ---------- */
+.book-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s 0.9s, background-color 0.2s;
+}
+.book-close:hover { background: var(--coral); }
+.book.is-open .book-close { opacity: 1; pointer-events: auto; }
+
+.book-hint { text-align: center; color: var(--muted); margin: 2.5rem auto 0; max-width: 60ch; }
+
+/* ---------- Vista apilada (tablet y móvil) ---------- */
+@media (max-width: 960px) {
+  .book {
+    display: block;
+    height: auto;
+    perspective: none;
+    max-width: 560px;
+  }
+  .book-page,
+  .book-page--left,
+  .book-page--right,
+  .book.is-open .book-page--left,
+  .book.is-open .book-page--right {
+    transform: none;
+    transition: none;
+  }
+  .book-face,
+  .book-page--left .book-face--cover {
+    position: static;
+    transform: none;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    border-radius: var(--radius);
+    margin-bottom: 1.25rem;
+    gap: 1.25rem;
+  }
+  .book-face--back,
+  .book-close { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-page { transition: none; }
+}
